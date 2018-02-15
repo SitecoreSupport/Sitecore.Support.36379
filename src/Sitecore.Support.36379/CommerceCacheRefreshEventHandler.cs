@@ -22,7 +22,9 @@ namespace Sitecore.Support.Commerce.Connect.CommerceServer.Events
                 if (args2 != null)
                 {
                     ICommerceServerContextManager contextManager = CommerceTypeLoader.CreateInstance<ICommerceServerContextManager>();
-                    CacheRefresh.Refresh(args2.CacheType, contextManager, args2.DatabaseName, args2.ItemID);
+                    #region Fix 36379
+                    Sitecore.Support.Commerce.Connect.CommerceServer.Caching.CacheRefresh.Refresh(args2.CacheType, contextManager, args2.DatabaseName, args2.ItemID);
+                    #endregion
                 }
             }
         }

@@ -116,7 +116,9 @@ namespace Sitecore.Support.Commerce.Connect.CommerceServer.Caching
         {
             if (!string.IsNullOrWhiteSpace(databaseName))
             {
-                Database database = Database.GetDatabase(databaseName);
+                #region Fix 36379
+                Database database = Factory.GetDatabase(databaseName, false);
+                #endregion
                 if (database != null)
                 {
                     database.Caches.ItemCache.Clear();
